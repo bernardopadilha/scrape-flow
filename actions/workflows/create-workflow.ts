@@ -19,7 +19,7 @@ export async function CreateWorkflow(form: createWorkflowType) {
   const { userId } = auth()
 
   if (!userId) {
-    throw new Error('Não autenticado')
+    throw new Error('unathenticated')
   }
 
   const initialFlow: { nodes: AppNode[]; edges: Edge[] } = {
@@ -41,7 +41,7 @@ export async function CreateWorkflow(form: createWorkflowType) {
   console.log(result, userId)
 
   if (!result) {
-    throw new Error('Erro ao criar o workflow')
+    throw new Error('Erro to create workflow')
   }
 
   redirect(`/workflow/editor/${result.id}`)

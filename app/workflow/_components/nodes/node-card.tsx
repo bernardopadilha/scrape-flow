@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-return */
 'use client'
 
+import UseFlowValidation from '@/components/hooks/use-flow-validation'
 import { cn } from '@/lib/utils'
 import { useReactFlow } from '@xyflow/react'
 import { ReactNode } from 'react'
@@ -15,6 +16,8 @@ function NodeCard({
   isSelected: boolean
 }) {
   const { getNode, setCenter } = useReactFlow()
+  const { invalidInputs } = UseFlowValidation()
+  const hasInvalidInputs = invalidInputs.some((node) => node.nodeId === nodeId)
 
   return (
     <div
@@ -42,6 +45,7 @@ function NodeCard({
       className={cn(
         'rounded-md cursor-pointer bg-background border-2 border-separate w-[420px] text-xs gap-1 flex flex-col',
         isSelected && 'border-primary',
+        hasInvalidInputs && 'border-destructive boreder-2',
       )}
     >
       {children}

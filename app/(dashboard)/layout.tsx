@@ -1,6 +1,6 @@
 import BreadcumbHeader from '@/components/breadcrumb-header'
 import DesktopSidebar from '@/components/sidebar'
-import { ModeToggle } from '@/components/teheme-mode-toggle'
+import { ModeToggle } from '@/components/theme-mode-toggle'
 import { Separator } from '@/components/ui/separator'
 import { SignedIn, UserButton } from '@clerk/nextjs'
 import { ReactNode } from 'react'

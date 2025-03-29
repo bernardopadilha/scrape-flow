@@ -2,7 +2,12 @@
 
 import { usePathname } from 'next/navigation'
 import React from 'react'
-import { Breadcrumb, BreadcrumbLink, BreadcrumbList } from './ui/breadcrumb'
+import {
+  Breadcrumb,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from './ui/breadcrumb'
 import { MobileSidebar } from './sidebar'
 
 function BreadcumbHeader() {
@@ -18,6 +23,8 @@ function BreadcumbHeader() {
               <BreadcrumbLink className="capitalize" href={`/${path}`}>
                 {path === '' ? 'home' : path}
               </BreadcrumbLink>
+
+              {index !== paths.length - 1 && <BreadcrumbSeparator />}
             </React.Fragment>
           ))}
         </BreadcrumbList>

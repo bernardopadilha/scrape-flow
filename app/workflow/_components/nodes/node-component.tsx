@@ -8,13 +8,17 @@ import { AppNodeData } from '@/types/app-node'
 import { TaskRegistry } from '@/lib/workflow/task/registry'
 import { NodeInput, NodeInputs } from './node-inputs'
 import { NodeOutput, NodeOutputs } from './node-outputs'
+import { Badge } from '@/components/ui/badge'
+
+const DEV_MODE = process.env.NEXT_PUBLIC_DEV_MODE === 'true'
 
 const NodeComponent = memo((props: NodeProps) => {
   const nodeData = props.data as AppNodeData
   const task = TaskRegistry[nodeData.type]
   return (
     <NodeCard nodeId={props.id} isSelected={!!props.selected}>
-      <NodeHeader taskType={nodeData.type} />
+      {DEV_MODE && <Badge>DEV: {props.id}</Badge>}
+      <NodeHeader nodeId={props.id} taskType={nodeData.type} />
       <NodeInputs>
         {task.inputs.map((input) => (
           <NodeInput key={input.name} input={input} nodeId={props.id} />

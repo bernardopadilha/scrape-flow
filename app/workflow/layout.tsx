@@ -1,11 +1,11 @@
 import Logo from '@/components/logo'
-import { ModeToggle } from '@/components/teheme-mode-toggle'
+import { ModeToggle } from '@/components/theme-mode-toggle'
 import { Separator } from '@/components/ui/separator'
 import React, { ReactNode } from 'react'
 
 function layout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-col w-full h-screen ">
+    <div className="flex flex-col w-full h-screen">
       {children}
       <Separator />
 

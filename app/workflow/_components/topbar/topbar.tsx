@@ -5,14 +5,26 @@ import { Button } from '@/components/ui/button'
 import { ChevronLeftIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import SaveBtn from './save-btn'
+import ExecuteBtn from './execute-btn'
+import NavigationTabs from './navigation-tabs'
+import PublishBtn from './publish-btn'
+import UnpublishBtn from './unpublish-btn'
 
 interface Props {
   title: string
   subtitle?: string
   workflowId: string
+  hideButtons?: boolean
+  isPublished?: boolean
 }
 
-function Topbar({ title, subtitle, workflowId }: Props) {
+function Topbar({
+  title,
+  subtitle,
+  workflowId,
+  hideButtons = false,
+  isPublished = false,
+}: Props) {
   const router = useRouter()
 
   return (
@@ -32,8 +44,20 @@ function Topbar({ title, subtitle, workflowId }: Props) {
           )}
         </div>
       </div>
+      <NavigationTabs workflowId={workflowId} />
       <div className="flex gap-1 flex-1 justify-end">
-        <SaveBtn workflowId={workflowId} />
+        {!hideButtons && (
+          <>
+            <ExecuteBtn workflowId={workflowId} />
+            {isPublished && <UnpublishBtn workflowId={workflowId} />}
+            {!isPublished && (
+              <>
+                <SaveBtn workflowId={workflowId} />
+                <PublishBtn workflowId={workflowId} />
+              </>
+            )}
+          </>
+        )}
       </div>
     </header>
   )

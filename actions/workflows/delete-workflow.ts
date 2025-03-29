@@ -6,9 +6,8 @@ import { revalidatePath } from 'next/cache'
 
 export async function DeleteWorkflow(id: string) {
   const { userId } = auth()
-
   if (!userId) {
-    throw new Error('Não autentiacado')
+    throw new Error('unathenticated')
   }
 
   await prisma.workflow.delete({

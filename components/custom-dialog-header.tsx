@@ -30,7 +30,7 @@ function CustomDialogHeader({
       <DialogTitle asChild>
         <div className="flex flex-col items-center gap-2 mb-2">
           {Icon && (
-            <Icon size={30} className={(cn('stroke-primary'), iconClassName)} />
+            <Icon size={30} className={cn('stroke-primary', iconClassName)} />
           )}
           {title && (
             <p className={cn('text-xl text-primary', titleClassName)}>
